@@ -1,6 +1,5 @@
 import React from "react"
 import { useDispatch } from "react-redux"
-
 import { addAnecdote } from "../reducers/anecdoteReducer"
 
 export const AnecdoteForm = () => {
@@ -15,6 +14,8 @@ export const AnecdoteForm = () => {
 
   return (
     <div>
+      <h2>create new</h2>
+
       <form onSubmit={handleAddAnecdote}>
         <div>
           <label htmlFor="new-anecdote">Anecdote:</label>{" "}
