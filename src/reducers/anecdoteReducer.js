@@ -21,6 +21,9 @@ const asObject = (anecdote) => {
 }
 
 // Action Creators
+
+// 6.3: anecdotes, step1
+// Implement the functionality for voting anecdotes. The amount of votes must be saved to a Redux-store.
 export const voteAnecdote = (id) => {
   return {
     type: "@anecdote/vote",
@@ -28,6 +31,8 @@ export const voteAnecdote = (id) => {
   }
 }
 
+// 6.4: anecdotes, step2
+// Implement the functionality for adding new anecdotes.
 export const addAnecdote = (content) => {
   return {
     type: "@anecdote/newAnecdote",
