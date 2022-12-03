@@ -21,6 +21,8 @@ const asObject = (anecdote) => {
 }
 
 // Action Creators
+// 6.6: anecdotes, step4
+// Separated the creation of action-objects to action creator-functions
 export const voteAnecdote = (id) => {
   return {
     type: "@anecdote/vote",
