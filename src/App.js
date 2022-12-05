@@ -1,11 +1,12 @@
 import AnecdoteForm from "./components/AnecdoteForm"
 import AnecdoteList from "./components/AnecdotesList"
-// import Counter from "./components/Counter"
+import Notification from "./components/Notification"
 
 const App = () => {
   return (
     <div>
-      {/* <Counter /> */}
+      <Notification />
+      <br />
       <h2>Anecdotes</h2>
       <AnecdoteList />
       <AnecdoteForm />
