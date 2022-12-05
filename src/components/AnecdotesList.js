@@ -17,12 +17,17 @@ const Anecdote = ({ anecdote }) => {
     }, 5000)
   }
 
+  const style = {
+    margin: "0px 5px",
+  }
   return (
     <div>
       <div>{anecdote.content}</div>
       <div>
         has {anecdote.votes}
-        <button onClick={handleVoteAnecdote}>vote</button>
+        <button style={style} onClick={handleVoteAnecdote}>
+          vote
+        </button>
       </div>
     </div>
   )
@@ -30,7 +35,13 @@ const Anecdote = ({ anecdote }) => {
 
 export const AnecdotesList = () => {
   const anecdotes = useSelector((state) => {
-    return state.anecdotes.anecdotes
+    if (state.filter.filterText === "") {
+      return state.anecdotes.anecdotes
+    } else {
+      return state.anecdotes.anecdotes.filter((a) => {
+        return a.content.toLowerCase().includes(state.filter.filterText)
+      })
+    }
   })
 
   return (
