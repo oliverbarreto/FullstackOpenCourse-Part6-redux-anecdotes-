@@ -39,7 +39,9 @@ export const AnecdotesList = () => {
       return state.anecdotes.anecdotes
     } else {
       return state.anecdotes.anecdotes.filter((a) => {
-        return a.content.toLowerCase().includes(state.filter.filterText)
+        return a.content
+          .toLowerCase()
+          .includes(state.filter.filterText.toLowerCase())
       })
     }
   })
