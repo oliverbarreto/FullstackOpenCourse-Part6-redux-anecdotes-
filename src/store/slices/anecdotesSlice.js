@@ -31,7 +31,7 @@ export const anecdotesSlice = createSlice({
       }
     },
 
-    createAnecdote: (state, action) => {
+    appendAnecdote: (state, action) => {
       const newAnecdote = {
         ...action.payload,
       }
@@ -45,7 +45,7 @@ export const anecdotesSlice = createSlice({
 })
 
 // Action creators are generated for each case reducer function
-export const { voteAnecdote, createAnecdote, setAnecdotes } =
+export const { voteAnecdote, appendAnecdote, setAnecdotes } =
   anecdotesSlice.actions
 
 // Thunks
@@ -53,5 +53,12 @@ export const initializeAnecdotes = () => {
   return async (dispatch) => {
     const initialAnecdotes = await anecdotesService.getAll()
     dispatch(setAnecdotes(initialAnecdotes))
+  }
+}
+
+export const createAnecdote = (newObject) => {
+  return async (dispatch) => {
+    const newAnecdote = await anecdotesService.postAnecdote(newObject)
+    dispatch(appendAnecdote(newAnecdote))
   }
 }
