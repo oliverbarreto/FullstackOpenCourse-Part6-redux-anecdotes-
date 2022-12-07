@@ -1,10 +1,7 @@
 import React from "react"
 import { useDispatch } from "react-redux"
 import { createAnecdote } from "../store/slices/anecdotesSlice"
-import {
-  hideNotification,
-  showNotification,
-} from "../store/slices/notificationsSlice"
+import { setNotification } from "../store/slices/notificationsSlice"
 
 export const AnecdoteForm = () => {
   const dispatch = useDispatch()
@@ -20,10 +17,7 @@ export const AnecdoteForm = () => {
     }
 
     dispatch(createAnecdote(newObject))
-    dispatch(showNotification(`New blog posted: ${content}`))
-    setTimeout(() => {
-      dispatch(hideNotification())
-    }, 5000)
+    dispatch(setNotification(`New blog posted: ${content}`))
   }
 
   return (

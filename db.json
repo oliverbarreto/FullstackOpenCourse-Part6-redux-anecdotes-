@@ -32,7 +32,7 @@
     },
     {
       "content": "esto es una nueva tarea",
-      "votes": 2,
+      "votes": 3,
       "id": "EH5cqgd"
     },
     {
@@ -42,8 +42,13 @@
     },
     {
       "content": "vamos españa",
-      "votes": 6,
+      "votes": 7,
       "id": "mK6gZoD"
+    },
+    {
+      "content": "miguel es un bailarin",
+      "votes": 1,
+      "id": "p049X0K"
     }
   ]
 }

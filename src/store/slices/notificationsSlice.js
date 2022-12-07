@@ -21,3 +21,13 @@ export const notificationsSlice = createSlice({
 
 // Action creators are generated for each case reducer function
 export const { showNotification, hideNotification } = notificationsSlice.actions
+
+// Thunks
+export const setNotification = (message) => {
+  return async (dispatch) => {
+    dispatch(showNotification(message))
+    setTimeout(() => {
+      dispatch(hideNotification())
+    }, 5000)
+  }
+}
