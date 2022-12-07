@@ -5,15 +5,23 @@ import {
   hideNotification,
   showNotification,
 } from "../store/slices/notificationsSlice"
+import anecdotesService from "../services/anecdotes"
 
 export const AnecdoteForm = () => {
   const dispatch = useDispatch()
 
-  const handleAddAnecdote = (event) => {
+  const handleAddAnecdote = async (event) => {
     event.preventDefault()
     const content = event.target.newAnecdote.value
     event.target.newAnecdote.value = ""
-    dispatch(createAnecdote(content))
+
+    const newObject = {
+      content,
+      votes: 0,
+    }
+    const newAnecdote = await anecdotesService.postAnecdote(newObject)
+    dispatch(createAnecdote(newAnecdote))
+
     dispatch(showNotification(`New blog posted: ${content}`))
     setTimeout(() => {
       dispatch(hideNotification())

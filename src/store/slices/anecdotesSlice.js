@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit"
 
 // Helper Function to provide IDs while we dont have a Backend that takes care of it on creation
-const getId = () => (100000 * Math.random()).toFixed(0)
+// const getId = () => (100000 * Math.random()).toFixed(0)
 
 // Helper Function - map content
 // const asObject = (anecdote) => {
@@ -32,9 +32,7 @@ export const anecdotesSlice = createSlice({
 
     createAnecdote: (state, action) => {
       const newAnecdote = {
-        content: action.payload,
-        votes: 0,
-        id: getId(),
+        ...action.payload,
       }
       return { allAnecdotes: state.allAnecdotes.concat(newAnecdote) }
     },
