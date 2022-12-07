@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit"
+import anecdotesService from "../../services/anecdotes"
 
 // Helper Function to provide IDs while we dont have a Backend that takes care of it on creation
 // const getId = () => (100000 * Math.random()).toFixed(0)
@@ -46,3 +47,11 @@ export const anecdotesSlice = createSlice({
 // Action creators are generated for each case reducer function
 export const { voteAnecdote, createAnecdote, setAnecdotes } =
   anecdotesSlice.actions
+
+// Thunks
+export const initializeAnecdotes = () => {
+  return async (dispatch) => {
+    const initialAnecdotes = await anecdotesService.getAll()
+    dispatch(setAnecdotes(initialAnecdotes))
+  }
+}
