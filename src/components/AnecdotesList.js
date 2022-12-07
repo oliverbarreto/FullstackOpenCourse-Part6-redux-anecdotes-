@@ -36,9 +36,9 @@ const Anecdote = ({ anecdote }) => {
 export const AnecdotesList = () => {
   const anecdotes = useSelector((state) => {
     if (state.filter.filterText === "") {
-      return state.anecdotes.anecdotes
+      return state.anecdotes.allAnecdotes
     } else {
-      return state.anecdotes.anecdotes.filter((a) => {
+      return state.anecdotes.allAnecdotes.filter((a) => {
         return a.content
           .toLowerCase()
           .includes(state.filter.filterText.toLowerCase())
@@ -49,11 +49,13 @@ export const AnecdotesList = () => {
   return (
     <div>
       {anecdotes
-        .slice()
-        .sort((a, b) => b.votes - a.votes)
-        .map((anecdote) => (
-          <Anecdote key={anecdote.id} anecdote={anecdote} />
-        ))}
+        ? anecdotes
+            .slice()
+            .sort((a, b) => b.votes - a.votes)
+            .map((anecdote) => (
+              <Anecdote key={anecdote.id} anecdote={anecdote} />
+            ))
+        : []}
     </div>
   )
 }

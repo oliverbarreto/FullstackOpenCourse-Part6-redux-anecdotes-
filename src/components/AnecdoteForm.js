@@ -13,7 +13,6 @@ export const AnecdoteForm = () => {
     event.preventDefault()
     const content = event.target.newAnecdote.value
     event.target.newAnecdote.value = ""
-    console.log(content)
     dispatch(createAnecdote(content))
     dispatch(showNotification(`New blog posted: ${content}`))
     setTimeout(() => {
