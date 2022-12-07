@@ -32,13 +32,18 @@
     },
     {
       "content": "esto es una nueva tarea",
-      "votes": 0,
+      "votes": 2,
       "id": "EH5cqgd"
     },
     {
       "content": "vamos España",
       "votes": 0,
       "id": "Uk4MlPK"
+    },
+    {
+      "content": "vamos españa",
+      "votes": 6,
+      "id": "mK6gZoD"
     }
   ]
 }

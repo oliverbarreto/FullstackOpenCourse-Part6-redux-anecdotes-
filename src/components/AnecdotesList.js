@@ -1,6 +1,6 @@
 import React from "react"
 import { useSelector, useDispatch } from "react-redux"
-import { voteAnecdote } from "../store/slices/anecdotesSlice"
+import { addVoteToAnecdote } from "../store/slices/anecdotesSlice"
 import {
   showNotification,
   hideNotification,
@@ -9,8 +9,9 @@ import {
 const Anecdote = ({ anecdote }) => {
   const dispatch = useDispatch()
 
-  const handleVoteAnecdote = () => {
-    dispatch(voteAnecdote(anecdote.id))
+  const handleVoteAnecdote = async () => {
+    dispatch(addVoteToAnecdote(anecdote.id))
+
     dispatch(showNotification(`You voted for: "${anecdote.content}"`))
     setTimeout(() => {
       dispatch(hideNotification())
