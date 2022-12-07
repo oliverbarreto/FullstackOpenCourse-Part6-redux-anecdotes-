@@ -4,6 +4,7 @@ import { createSlice } from "@reduxjs/toolkit"
 
 const initialState = {
   message: null,
+  lastTimeoutId: null,
 }
 
 export const notificationsSlice = createSlice({
@@ -11,10 +12,14 @@ export const notificationsSlice = createSlice({
   initialState,
   reducers: {
     showNotification: (state, action) => {
-      state.message = action.payload
+      return {
+        message: action.payload.message,
+        lastTimeoutId: action.payload.lastTimeoutId,
+      }
     },
     hideNotification: (state) => {
       state.message = null
+      state.lastTimeoutId = null
     },
   },
 })
@@ -24,10 +29,14 @@ export const { showNotification, hideNotification } = notificationsSlice.actions
 
 // Thunks
 export const setNotification = (message) => {
-  return async (dispatch) => {
-    dispatch(showNotification(message))
-    setTimeout(() => {
+  return async (dispatch, getState) => {
+    const lastId = getState().notifications.lastTimeoutId
+    if (lastId !== null) {
+      clearTimeout(lastId)
+    }
+    const lastTimeoutId = setTimeout(() => {
       dispatch(hideNotification())
     }, 5000)
+    dispatch(showNotification({ message, lastTimeoutId }))
   }
 }
